@@ -35,7 +35,7 @@ const plans: Record<PlanType, PlanDetails> = {
         pricePerMonth: 649,
         per: '/mnd',
         binding: 6,
-        cta: 'Start 6 mnd nå',
+        cta: 'Start 6 mnd + 1 gratis nå',
         guarantee: true,
         tagText: 'Mest populær',
         discount: '- 1 800 kr',
