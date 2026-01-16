@@ -1,0 +1,64 @@
+/* FullPage.js Custom Styles */
+
+/* Navigation dots */
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background: white !important;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+}
+
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li:hover a.active span {
+  background: white !important;
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+}
+
+#fp-nav ul li:hover a span,
+.fp-slidesNav ul li:hover a span {
+  opacity: 0.8;
+}
+
+/* Section styling */
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth transitions */
+.fp-section {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Remove default margins */
+.fp-watermark {
+  display: none !important;
+}
+
+/* Ensure proper mobile height */
+@media (max-width: 768px) {
+  .section {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Dark nav dots on light sections */
+.light-nav #fp-nav ul li a span {
+  background: black !important;
+}
+
+.light-nav #fp-nav ul li a.active span {
+  background: black !important;
+}

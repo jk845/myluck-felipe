@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "deno.window"
+    ],
+    "strict": true
+  },
+  "nodeModulesDir": "auto",
+  "imports": {
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.49.9",
+    "@supabase/functions-js": "jsr:@supabase/functions-js",
+    "@mollie/api-client": "npm:@mollie/api-client@^4.1.0",
+    "resend": "npm:resend@latest",
+    "zod": "npm:zod@^3.23.8",
+    "hono": "jsr:@hono/hono",
+    "hono/http-exception": "jsr:@hono/hono/http-exception",
+    "@hono/swagger-ui": "jsr:@hono/swagger-ui",
+    "@hono/zod-openapi": "npm:@hono/zod-openapi@^1.1.3",
+    "@marathon/core": "./packages/core/src/index.ts",
+    "@marathon/core-shared": "./packages/core-shared/src/index.ts",
+    "@marathon/core-subscriptions": "./packages/core-subscriptions/src/index.ts",
+    "@marathon/core-admin": "./packages/core-admin/src/index.ts",
+    "@marathon/core-coaching": "./packages/core-coaching/src/index.ts",
+    "@marathon/db-types": "./packages/db-types/src/index.ts",
+    "@marathon/integrations": "./packages/integrations/src/index.ts",
+    "@shared/config": "./supabase/functions/_shared/config.ts",
+    "@shared/": "./supabase/functions/_shared/lib/"
+  },
+  "verifyJWT": false,
+  "tasks": {
+    "test": "deno test --allow-net=false --allow-env --allow-read supabase/functions/_shared/lib/tests/",
+    "test:watch": "deno test --allow-net=false --allow-env --allow-read --watch supabase/functions/_shared/lib/tests/",
+    "test:all": "deno test --allow-net --allow-env --allow-read",
+    "test:unit": "deno test --allow-net=false --allow-env --allow-read supabase/functions/_shared/lib/tests/",
+    "test:integration": "deno test --allow-net --allow-env --allow-read supabase/functions/subscriptions/webhook-mollie-payments/"
+  }
+}

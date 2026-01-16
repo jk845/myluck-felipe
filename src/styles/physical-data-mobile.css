@@ -1,0 +1,53 @@
+/* Physical Data Step Mobile Styles */
+
+/* Very small phones (< 360px width) */
+@media (max-width: 359px) {
+  /* Further reduce font sizes */
+  .physical-data-label {
+    font-size: 9px !important;
+  }
+  
+  .physical-data-value {
+    font-size: 16px !important;
+  }
+  
+  .physical-data-unit {
+    font-size: 12px !important;
+  }
+  
+  /* Reduce grid gap even more */
+  .physical-data-grid {
+    gap: 0.25rem !important;
+  }
+  
+  /* Reduce container padding */
+  .physical-data-container {
+    padding: 0.75rem !important;
+  }
+}
+
+/* Safe area handling for devices with notches */
+@supports (padding-left: env(safe-area-inset-left)) {
+  .physical-data-form {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+}
+
+/* Improve wheel picker touch targets on small screens */
+@media (max-width: 375px) {
+  .wheel-picker-item {
+    min-height: 48px; /* Ensure minimum touch target size */
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .physical-data-features {
+    display: none; /* Hide features section in landscape to save space */
+  }
+  
+  .physical-data-container {
+    margin-bottom: 1rem !important;
+  }
+}
