@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import CheckoutV2Presenter from '@/components/presenters/checkout/CheckoutV2Presenter';
-import { useRegistrationStore } from '@/store/registration.store';
-import { analyticsService } from '@/services/analytics.service';
 
 export type PlanType = '1month' | '6month';
 
@@ -47,8 +44,6 @@ const plans: Record<PlanType, PlanDetails> = {
 };
 
 const CheckoutV2Container: React.FC = () => {
-    const navigate = useNavigate();
-    const { setSubscriptionPlan, setSimplifiedMode, resetRegistration } = useRegistrationStore();
     const [selectedPlan, setSelectedPlan] = useState<PlanType>('6month');
     const [timeRemaining, setTimeRemaining] = useState<string>('—:—:—');
 
@@ -76,12 +71,7 @@ const CheckoutV2Container: React.FC = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // Track page view
-    useEffect(() => {
-        analyticsService.trackPageView('checkout-v2', {
-            default_plan: selectedPlan
-        });
-    }, []);
+
 
     const getNextBillingDate = (): string => {
         const now = new Date();
@@ -94,48 +84,19 @@ const CheckoutV2Container: React.FC = () => {
 
     const handlePlanChange = (plan: PlanType) => {
         setSelectedPlan(plan);
-        analyticsService.trackFormFieldChanged('checkout-v2', 'plan', plan, {
-            price: plans[plan].priceToday
-        });
     };
 
     // Helper function to get bonuses for each plan
-    const getBonusesForPlan = (plan: PlanType): string[] => {
-        switch (plan) {
-            case '6month':
-                return [
-                    'Milas kostholdsplan tilpasset deg'
-                ];
-            case '1month':
-            default:
-                return [];
-        }
-    };
+
 
     const handleContinue = () => {
-        // Reset any existing registration data first
-        resetRegistration();
+        // Redirect to Everfit package based on selected plan
+        const everfitUrls = {
+            '6month': 'https://coach.everfit.io/package/KT501810',
+            '1month': 'https://coach.everfit.io/package/KW331845'
+        };
 
-        // Set the selected plan in the registration store
-        setSubscriptionPlan(selectedPlan);
-
-        // Enable simplified mode
-        setSimplifiedMode(true);
-
-        // Navigate to registration with simplified flag
-        navigate('/registration?simplified=true', {
-            state: {
-                selectedPlan,
-                fromCheckout: true,
-                planDetails: {
-                    name: plans[selectedPlan].label,
-                    price: plans[selectedPlan].pricePerMonth,
-                    perDayPrice: `Fra ${Math.round(plans[selectedPlan].pricePerMonth / 30)} kr dagen`,
-                    guarantee: plans[selectedPlan].guarantee,
-                    bonuses: getBonusesForPlan(selectedPlan)
-                }
-            }
-        });
+        window.location.href = everfitUrls[selectedPlan];
     };
 
     const benefits = [

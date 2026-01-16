@@ -47,7 +47,7 @@ const App: React.FC = () => {
           <ScrollToTop />
           <RouteTracker />
           <Routes>
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<CheckoutV2Page />} />
             <Route path="/landing" element={<LandingPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/checkout-v2" element={<CheckoutV2Page />} />
