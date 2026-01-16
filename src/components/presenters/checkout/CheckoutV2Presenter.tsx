@@ -148,7 +148,7 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                         onClick={onContinue}
                         className="w-full rounded-full bg-[#fbdcfb] text-zinc-900 border-2 border-zinc-900 px-6 py-2 text-sm font-semibold transition-all hover:bg-rose-200 flex flex-col items-center justify-center"
                     >
-                        <span>{`Start ${selectedPlan === '6month' ? '6 mnd + 1 gratis' : '1 mnd'} nå`}</span>
+                        <span>{`Start ${selectedPlan === '6month' ? '6 mnd + 1 mnd gratis' : '1 mnd'} nå`}</span>
                         <span className="text-[10px] font-normal opacity-80">Bekreft bestilling og betal</span>
                     </button>
                     <p className="text-xs text-zinc-600 text-center mt-2">
@@ -477,7 +477,7 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                         >
                             <div className="flex items-center gap-1.5">
                                 <Lock className="w-3.5 h-3.5" />
-                                <span>{`Start ${selectedPlan === '6month' ? '6 mnd + 1 gratis' : '1 mnd'} nå`}</span>
+                                <span>{`Start ${selectedPlan === '6month' ? '6 mnd + 1 mnd gratis' : '1 mnd'} nå`}</span>
                             </div>
                             <span className="text-[10px] font-normal opacity-80">Bekreft bestilling og betal</span>
                         </button>
