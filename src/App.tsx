@@ -22,6 +22,14 @@ import CheckoutPage from "./pages/CheckoutPage";
 import CheckoutLimitedOfferPage from "./pages/CheckoutLimitedOfferPage";
 import CheckoutV2Page from "./pages/CheckoutV2Page";
 
+// Basic redirect component for client-side routing
+const RedirectToMyluck: React.FC = () => {
+  React.useEffect(() => {
+    window.location.replace("https://myluck.no");
+  }, []);
+  return null;
+};
+
 const App: React.FC = () => {
   // Maintenance mode через переменную окружения
   const MAINTENANCE_MODE = import.meta.env.VITE_MAINTENANCE_MODE === 'true';
@@ -49,7 +57,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<CheckoutV2Page />} />
             <Route path="/landing" element={<LandingPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/checkout" element={<RedirectToMyluck />} />
+            <Route path="/checkout-mollie" element={<CheckoutPage />} />
             <Route path="/checkout-v2" element={<CheckoutV2Page />} />
             <Route path="/checkout-limited-offer" element={<CheckoutLimitedOfferPage />} />
             <Route path="/registration" element={<RegistrationPage />} />

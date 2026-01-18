@@ -1,19 +1,17 @@
 import React from 'react';
 import MyluckLogo from '@/components/assets/icons/MyluckLogo';
-import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   mode: 'dark' | 'light';
 }
 
 const Navbar: React.FC<NavbarProps> = ({ mode }) => {
-  const navigate = useNavigate();
   const isDarkMode = mode === 'dark';
-  
+
   const handleStartRegistration = () => {
-    navigate('/checkout');
+    window.location.href = 'https://myluck.no';
   };
-  
+
   return (
     <header className={`
       fixed top-0 left-0 w-full z-50
@@ -23,12 +21,12 @@ const Navbar: React.FC<NavbarProps> = ({ mode }) => {
     `}>
       <div className="flex items-center justify-between px-4 py-3 transition-colors duration-500 ease-in-out">
         <div className="flex items-center gap-2">
-          <MyluckLogo 
-            color={isDarkMode ? 'white' : 'black'} 
-            className="h-6 w-auto transition-colors duration-500 ease-in-out" 
+          <MyluckLogo
+            color={isDarkMode ? 'white' : 'black'}
+            className="h-6 w-auto transition-colors duration-500 ease-in-out"
           />
         </div>
-        
+
         <button
           onClick={handleStartRegistration}
           className={`

@@ -1,12 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { LandingPresenter } from '@/components/presenters/landing/LandingPresenter';
 
 export const LandingContainer: React.FC = () => {
-  const navigate = useNavigate();
 
   const handleStartRegistration = () => {
-    navigate('/checkout');
+    window.location.href = 'https://myluck.no';
   };
 
   const handleLeadMagnet = () => {
