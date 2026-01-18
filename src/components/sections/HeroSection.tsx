@@ -23,7 +23,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
         className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 h-14 hover:bg-gray-100 transition-colors"
       >
         <span className="text-black text-xl font-semibold font-['Hind_Vadodara']">
-          Få tilgang nå!
+          Få tilgang nå!!
         </span>
       </a>
     </div>

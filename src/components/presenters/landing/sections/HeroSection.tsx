@@ -88,7 +88,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               className="w-full h-14 bg-white rounded-full flex justify-center items-center transition-all hover:scale-105 hover:shadow-2xl group"
             >
               <span className="text-black text-lg sm:text-xl font-semibold font-['Hind_Vadodara'] leading-5 tracking-[-0.9px] sm:tracking-[-1px] group-hover:text-purple-600 transition-colors">
-                Få tilgang nå!
+                Få tilgang nå!!
               </span>
             </a>
 
