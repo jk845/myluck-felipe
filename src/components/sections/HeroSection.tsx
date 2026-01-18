@@ -5,7 +5,7 @@ interface HeroSectionProps {
   onStartRegistration: () => void;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onStartRegistration }) => {
+const HeroSection: React.FC<HeroSectionProps> = () => {
   return (
     <div className="max-w-md w-full mb-4 mx-auto flex flex-col items-center justify-self-end">
       <div className="pb-12 pt-8">
@@ -18,14 +18,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartRegistration }) => {
         Abonner på Myluck for å få tilgang til appen, direktesendinger og Transformasjons-Marathons
       </div>
 
-      <button
-        onClick={onStartRegistration}
+      <a
+        href="https://myluck.no"
         className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 h-14 hover:bg-gray-100 transition-colors"
       >
         <span className="text-black text-xl font-semibold font-['Hind_Vadodara']">
           Få tilgang nå!
         </span>
-      </button>
+      </a>
     </div>
   );
 };
