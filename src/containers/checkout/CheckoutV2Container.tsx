@@ -21,7 +21,7 @@ const PRICE_INCREASE_DEADLINE = new Date(2025, 9, 20, 23, 59, 59); // Oct 20, 20
 
 const plans: Record<PlanType, PlanDetails> = {
     '1month': {
-        label: '1 mnd',
+        label: '1 måned',
         priceToday: 979,
         pricePerMonth: 979,
         per: '',
