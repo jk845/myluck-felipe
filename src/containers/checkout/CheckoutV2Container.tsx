@@ -35,7 +35,7 @@ const plans: Record<PlanType, PlanDetails> = {
         pricePerMonth: 649,
         per: '/mnd',
         binding: 6,
-        cta: 'Start 6 mnd + 1 mnd gratis nå',
+        cta: 'Start 6 mnd nå',
         guarantee: true,
         tagText: 'Mest populær',
         discount: '- 1 800 kr',
@@ -92,7 +92,7 @@ const CheckoutV2Container: React.FC = () => {
     const handleContinue = () => {
         // Redirect to Everfit package based on selected plan
         const everfitUrls = {
-            '6month': 'https://coach.everfit.io/package/KT501810',
+            '6month': 'https://coach.everfit.io/package/HL076810',
             '1month': 'https://coach.everfit.io/package/KW331845'
         };
 
