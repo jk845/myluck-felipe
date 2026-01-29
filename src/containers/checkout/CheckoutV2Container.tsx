@@ -30,7 +30,7 @@ const plans: Record<PlanType, PlanDetails> = {
         guarantee: false
     },
     '6month': {
-        label: '6 mnd pluss 1 ekstra måned gratis!',
+        label: '6 måneder',
         priceToday: 649,
         pricePerMonth: 649,
         per: '/mnd',
