@@ -40,12 +40,8 @@ export function TermsAndConditionsV2Container() {
             title: 'Cancellation and Refunds',
             content: [
                 {
-                    subtitle: '4.1 Right to Refund',
-                    text: 'You may request a full refund within 14 days of purchase, no questions asked. After this period, no refunds will be issued. This applies to both <b>non-renewing</b> and <b>binding</b> subscriptions. If you are subscribed to a <b>binding subscription</b>, you remain responsible for the remaining payments after the 14-day refund period.'
-                },
-                {
-                    subtitle: '4.1 Right to Cancel and Refund (Angrerett)',
-                    text: 'You have the right to cancel this contract within 14 days of the initial purchase without giving any reason – your subscription will be terminated immediately, and access to all services will end. You may be eligible for a refund.<br /><br /><b>Cancellation after 14 days of initial purchase:</b> Your subscription will remain active until the end of the current billing cycle for the monthly plan, or until the end of the current binding period for the 6-month plan. After this period, the access will be terminated. No refunds will be provided.'
+                    subtitle: '4.1 Right of Withdrawal (Angrerett) — Angrerettloven §22',
+                    text: 'You have the right to withdraw from this contract within 14 days of the date of purchase, without giving any reason (the "withdrawal period").<br /><br /><b>Immediate delivery and waiver of refund right:</b><br />By completing your purchase, you expressly request that Gymfluence OÜ begins providing the digital service immediately, before the 14-day withdrawal period has expired. At the time of purchase, you are asked to confirm this request by actively ticking a checkbox. By doing so, you acknowledge that you waive your right to a refund for the service already delivered, in accordance with Angrerettloven §22(m).<br /><br /><b>Effect of cancellation within 14 days:</b><br />If you exercise your right of withdrawal within the 14-day period, your subscription will be cancelled immediately and no further charges will be made. However, no refund will be issued for the current paid period, as the digital service has already been delivered from the moment of purchase and you consented to immediate delivery at checkout.<br /><br /><b>Cancellation after 14 days:</b><br />Your subscription remains active until the end of the current billing cycle (monthly plan) or until the end of the binding period (6-month plan). No refunds are provided after the withdrawal period has expired.'
                 },
                 {
                     subtitle: '4.2 Non-Renewing Subscription',
@@ -60,8 +56,8 @@ export function TermsAndConditionsV2Container() {
                     text: 'To exercise the right of cancellation, you must inform us of your decision to cancel by sending an email to our support team at <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>.<br /><br />You may use the Angrerettskjema available here, but it is not obligatory:<br /><a href="https://drive.google.com/file/d/1WQ82ajIzdsvHHnn6RQPG7vcV5LCR8Dmf/view?usp=sharing" target="_blank" class="underline">Angrerettskjema Link</a><br /><br />To meet the cancellation deadline, it is sufficient for you to send your communication concerning your exercise of the right of cancellation before the cancellation period has expired.'
                 },
                 {
-                    subtitle: '4.5 Process of Refund',
-                    text: 'To request a refund, contact our support team at <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>.'
+                    subtitle: '4.5 No Refund Policy',
+                    text: 'As you consented to immediate delivery of the digital service at checkout, no refunds are issued once service delivery has commenced. If you believe you have not received the service or have a complaint, please contact us at <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>, and we will investigate.'
                 }
             ]
         },
@@ -113,7 +109,7 @@ export function TermsAndConditionsV2Container() {
         {
             number: '14',
             title: 'Contact Information',
-            content: 'If you have any questions or concerns about these Terms, please contact us at <a href="mailto:ask@myluck.no">ask@myluck.no</a>.'
+            content: 'If you have any questions or concerns about these Terms, please contact us. Support is available exclusively via email at <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>.'
         },
 
         // ---  NORWEGIAN VERSION ---
@@ -125,7 +121,7 @@ export function TermsAndConditionsV2Container() {
                 text: 'Go to English Version',
                 targetId: 'english-version'
             },
-            content: '<b>Sist oppdatert: 25.11.2025</b><br /><br />Velkommen til Gymfluence OÜ (Paepargi tn 43, 11417 Tallinn, Estland). Disse vilkårene og betingelsene ("Vilkår") regulerer din bruk av nettstedet vårt, mobilapplikasjonen ("Appen") og tilknyttede tjenester, inkludert deltakelse i våre treningsmaraton og abonnementsplaner. Ved å få tilgang til eller bruke noen del av våre tjenester, samtykker du i å være bundet av disse Vilkårene. Hvis du ikke godtar dem, vennligst ikke bruk tjenestene våre.'
+            content: '<b>Sist oppdatert: 27.02.2026</b><br /><br />Velkommen til Gymfluence OÜ (Paepargi tn 43, 11417 Tallinn, Estland). Disse vilkårene og betingelsene ("Vilkår") regulerer din bruk av nettstedet vårt, mobilapplikasjonen ("Appen") og tilknyttede tjenester, inkludert deltakelse i våre treningsmaraton og abonnementsplaner. Ved å få tilgang til eller bruke noen del av våre tjenester, samtykker du i å være bundet av disse Vilkårene. Hvis du ikke godtar dem, vennligst ikke bruk tjenestene våre.'
         },
         {
             number: '1',
@@ -164,12 +160,8 @@ export function TermsAndConditionsV2Container() {
             title: 'Kansellering og refusjoner',
             content: [
                 {
-                    subtitle: '4.1 Rett til refusjon',
-                    text: 'Du kan be om full refusjon innen 14 dager etter kjøpsdato, uten spørsmål. Etter denne perioden gis ingen refusjoner. Dette gjelder både ikke-fornyende og bindende abonnementer. Hvis du har et bindende abonnement, er du fortsatt ansvarlig for resterende betalinger etter 14-dagersperioden.'
-                },
-                {
-                    subtitle: '4.1 Rett til å kansellere og refundere (Angrerett)',
-                    text: 'Du har rett til å kansellere denne avtalen innen 14 dager fra det første kjøpet, uten å oppgi grunn. Abonnementet ditt avsluttes umiddelbart, og tilgangen til alle tjenester stoppes. Du kan være berettiget til refusjon.<br /><br /><b>Kansellering etter 14 dager fra første kjøp:</b> Abonnementet ditt forblir aktivt ut inneværende faktureringsperiode for månedsplanen, eller ut bindingstiden for 6-månedersplanen. Etter dette termineres tilgangen. Ingen refusjoner gis.'
+                    subtitle: '4.1 Angrerett — Angrerettloven §22',
+                    text: 'Du har rett til å trekke deg fra denne avtalen innen 14 dager fra kjøpsdatoen, uten å oppgi grunn («angreperioden»).<br /><br /><b>Umiddelbar levering og frafall av refusjonsrett:</b><br />Ved å gjennomføre kjøpet ber du uttrykkelig om at Gymfluence OÜ begynner å levere den digitale tjenesten umiddelbart, før 14-dagersfristen er utløpt. På kjøpstidspunktet bekrefter du dette ved å aktivt krysse av en boks. Ved å gjøre dette erkjenner du at du frasier deg retten til refusjon for tjenesten som allerede er levert, i samsvar med Angrerettloven §22(m).<br /><br /><b>Virkning av kansellering innen 14 dager:</b><br />Hvis du benytter angreretten innen 14-dagersperioden, vil abonnementet ditt bli kansellert umiddelbart og ingen ytterligere kostnader vil påløpe. Det vil imidlertid ikke bli gitt refusjon for den allerede betalte perioden, ettersom den digitale tjenesten er levert fra kjøpstidspunktet og du samtykket til umiddelbar levering ved kjøp.<br /><br /><b>Kansellering etter 14 dager:</b><br />Abonnementet ditt forblir aktivt ut inneværende faktureringsperiode (månedsplan) eller ut bindingstiden (6-månedsplan). Ingen refusjoner gis etter at angreperioden er utløpt.'
                 },
                 {
                     subtitle: '4.2 Ikke-fornyende abonnement',
@@ -184,8 +176,8 @@ export function TermsAndConditionsV2Container() {
                     text: 'For å bruke angreretten må du informere oss om din beslutning ved å sende en e-post til vårt supportteam på <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>.<br /><br />Du kan bruke angrerettskjemaet som er tilgjengelig her, men det er ikke obligatorisk:<br /><a href="https://drive.google.com/file/d/1WQ82ajIzdsvHHnn6RQPG7vcV5LCR8Dmf/view?usp=sharing" target="_blank" class="underline">Angrerettskjema Link</a><br /><br />For å overholde fristen er det tilstrekkelig at du sender meldingen før angreperioden er utløpt.'
                 },
                 {
-                    subtitle: '4.5 Fremgangsmåte for refusjon',
-                    text: 'For å be om refusjon, kontakt vårt supportteam på <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>.'
+                    subtitle: '4.5 Ingen refusjonspolicy',
+                    text: 'Ettersom du samtykket til umiddelbar levering av den digitale tjenesten ved kjøp, gis det ingen refusjoner når tjenesteleveringen har startet. Hvis du mener du ikke har mottatt tjenesten eller har en klage, kontakt oss på <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>.'
                 }
             ]
         },
@@ -237,7 +229,7 @@ export function TermsAndConditionsV2Container() {
         {
             number: '14',
             title: 'Kontaktinformasjon',
-            content: 'Har du spørsmål eller bekymringer om disse Vilkårene? Kontakt oss på <a href="mailto:ask@myluck.no">ask@myluck.no</a>.'
+            content: 'Har du spørsmål eller bekymringer om disse Vilkårene? Kontakt oss. Kundeservice er utelukkende tilgjengelig via e-post på <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>.'
         }
     ];
 
@@ -245,7 +237,7 @@ export function TermsAndConditionsV2Container() {
         <div id="english-version">
             <TermsAndConditionsPresenter
                 title="Terms and Conditions – Myluck by Gymfluence"
-                lastUpdated="25.11.2025"
+                lastUpdated="27.02.2026"
                 introText='Welcome to Gymfluence OÜ (Paepargi tn 43, 11417 Tallinn, Estonia). These Terms and Conditions ("Terms") govern your use of our website, mobile application ("App"), and related services, including participation in our Fitness Marathons and subscription plans. By accessing or using any part of our services, you agree to be bound by these Terms. If you do not agree, please do not use our services.'
                 sections={sections}
                 jumpButtonText="Gå til Norsk Versjon"

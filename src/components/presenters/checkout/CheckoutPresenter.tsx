@@ -81,7 +81,7 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
     },
     {
       question: "Er det binding og garanti?",
-      answer: "6 og 12 mnd: 14 dagers pengene-tilbake-garanti.\n\n1 mnd: ingen garanti (fin for å prøve).\nAbonnement fornyes månedlig. Du kan avslutte når bindingen er over og beholder tilgang ut betalt periode."
+      answer: "Du har 14 dagers angrerett. Kansellering innen 14 dager stopper fremtidige betalinger, men det gis ikke refusjon for allerede levert tjeneste."
     },
     {
       question: "Kan jeg bytte plan?",
@@ -154,6 +154,9 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
           <p className="text-xs text-zinc-600 text-center mt-2">
             Du betaler kun første månedsbeløp i dag. Umiddelbar tilgang + plass i alle kommende maraton i medlemsperioden.
           </p>
+          <p className="text-[10px] text-zinc-500 text-center mt-1.5 leading-tight">
+            For å benytte angreretten, kontakt oss på <a href="mailto:ask@myluck.no" className="underline hover:text-zinc-800">ask@myluck.no</a> innen 14 dager fra kjøpsdato.
+          </p>
         </div>
 
         {/* Plan Selection */}
@@ -172,11 +175,15 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
                 <div className="flex items-baseline justify-between">
                   <h3 className="text-lg font-semibold">{plans['6month'].label}</h3>
                   <div className="text-right">
-                    <span className="text-sm text-zinc-600">590 kr/mnd</span>
+                    <div className="text-sm text-zinc-600 font-semibold">{plans['6month'].priceToday} kr/mnd</div>
+                    <div className="text-[9px] text-zinc-500 font-medium mt-0.5">
+                      Totalkostnad for bindingsperioden:<br />
+                      {plans['6month'].priceToday * 6} kr ({plans['6month'].priceToday} kr/mnd × 6 mnd)
+                    </div>
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 mt-2">
-                  ✅ 14 dagers fornøyd-garanti
+                  ✅ 14 dagers angrerett
                 </p>
               </div>
               <div className="border-t rounded-b-2xl overflow-hidden bg-gray-100 text-gray-600 border-gray-200">
@@ -205,7 +212,7 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 mt-2">
-                  Ingen garanti på denne planen
+                  Ingen angrerett på denne planen
                 </p>
               </div>
             </article>
@@ -428,7 +435,7 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
           <div className="bg-green-50 border-b border-green-100">
             <div className="mx-auto max-w-md px-4 py-2">
               <p className="text-xs text-green-700 text-center font-medium">
-                14 dagers pengene-tilbake. Ingen spørsmål.
+                14 dagers angrerett — kanseller når som helst
               </p>
             </div>
           </div>
@@ -443,6 +450,12 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
               <div className="text-xs text-zinc-600 font-semibold">
                 {currentPlan.priceToday} kr i dag
               </div>
+              {selectedPlan === '6month' && (
+                <div className="text-[9px] text-zinc-500 font-medium leading-tight mt-0.5">
+                  Totalkostnad for bindingsperioden:<br />
+                  {currentPlan.priceToday * 6} kr ({currentPlan.priceToday} kr/mnd × 6 mnd)
+                </div>
+              )}
               <div className="text-xs text-zinc-600">
                 Neste månedsbetaling {nextBillingDate}
               </div>

@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import LazyImage from "@/components/ui/lazy-image";
 import { Lock } from 'lucide-react';
+import { ConsentModal } from "@/components/checkout/ConsentModal";
+import { registrationService } from "@/services/registration.service";
 
 // Import assets
 import Photo1 from '@/assets/girl_success_1.jpg';
@@ -25,6 +27,7 @@ const OrderConfirmationStep: React.FC<OrderConfirmationStepProps> = ({
   isLoading,
 }) => {
   const [showBottomBar, setShowBottomBar] = useState(false);
+  const [showConsentModal, setShowConsentModal] = useState(false);
   const topCtaRef = useRef<HTMLButtonElement>(null);
 
   const subscriptionMonths = subscriptionInfo.subscription.includes('12') ? 12 :
@@ -56,6 +59,22 @@ const OrderConfirmationStep: React.FC<OrderConfirmationStepProps> = ({
 
   // Handle submit
   const handleSubmit = () => {
+    setShowConsentModal(true);
+  };
+
+  const handleAcceptConsent = async (email: string) => {
+    // Log the consent event server-side
+    try {
+      await registrationService.logConsent({
+        email,
+        consentType: 'immediate_start_waiver',
+        plan: subscriptionInfo.subscription,
+        userAgent: navigator.userAgent
+      });
+    } catch (error) {
+      console.error('Failed to log consent:', error);
+    }
+
     onSubmit(subscriptionMonths > 1 ? 'monthly' : undefined);
   };
 
@@ -217,6 +236,12 @@ const OrderConfirmationStep: React.FC<OrderConfirmationStepProps> = ({
           </div>
         </div>
       </div>
+
+      <ConsentModal
+        isOpen={showConsentModal}
+        onClose={() => setShowConsentModal(false)}
+        onAccept={handleAcceptConsent}
+      />
     </div>
   );
 };

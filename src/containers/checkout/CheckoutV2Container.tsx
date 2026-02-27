@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CheckoutV2Presenter from '@/components/presenters/checkout/CheckoutV2Presenter';
+import { ConsentModal } from '@/components/checkout/ConsentModal';
+import { registrationService } from '@/services/registration.service';
 
 export type PlanType = '1month' | '6month';
 
@@ -46,6 +48,7 @@ const plans: Record<PlanType, PlanDetails> = {
 const CheckoutV2Container: React.FC = () => {
     const [selectedPlan, setSelectedPlan] = useState<PlanType>('6month');
     const [timeRemaining, setTimeRemaining] = useState<string>('—:—:—');
+    const [showConsentModal, setShowConsentModal] = useState(false);
 
     // Calculate countdown timer
     useEffect(() => {
@@ -90,8 +93,25 @@ const CheckoutV2Container: React.FC = () => {
 
 
     const handleContinue = () => {
-        // Redirect to Everfit package based on selected plan
-        const everfitUrls = {
+        setShowConsentModal(true);
+    };
+
+    const handleAcceptConsent = async (email: string) => {
+        // Log the consent event server-side
+        try {
+            await registrationService.logConsent({
+                email,
+                consentType: 'immediate_start_waiver',
+                plan: selectedPlan,
+                userAgent: navigator.userAgent
+            });
+        } catch (error) {
+            console.error('Failed to log consent:', error);
+            // We still proceed even if logging fails, to not block the user
+        }
+
+        // Redirect to Everfit package
+        const everfitUrls: Record<PlanType, string> = {
             '6month': 'https://coach.everfit.io/package/HL076810',
             '1month': 'https://coach.everfit.io/package/KW331845'
         };
@@ -107,15 +127,22 @@ const CheckoutV2Container: React.FC = () => {
     ];
 
     return (
-        <CheckoutV2Presenter
-            selectedPlan={selectedPlan}
-            plans={plans}
-            onPlanChange={handlePlanChange}
-            timeRemaining={timeRemaining}
-            nextBillingDate={getNextBillingDate()}
-            benefits={benefits}
-            onContinue={handleContinue}
-        />
+        <>
+            <CheckoutV2Presenter
+                selectedPlan={selectedPlan}
+                plans={plans}
+                onPlanChange={handlePlanChange}
+                timeRemaining={timeRemaining}
+                nextBillingDate={getNextBillingDate()}
+                benefits={benefits}
+                onContinue={handleContinue}
+            />
+            <ConsentModal
+                isOpen={showConsentModal}
+                onClose={() => setShowConsentModal(false)}
+                onAccept={handleAcceptConsent}
+            />
+        </>
     );
 };
 

@@ -57,7 +57,7 @@ class RegistrationService {
       apiPayload
     });
     console.log('📤 [Registration Service] API subscription:', apiPayload.subscription);
-    
+
     // Validate the payload before sending
     validateRegistrationPayload(apiPayload);
 
@@ -106,6 +106,21 @@ class RegistrationService {
     return apiService.post<{ isPaid: boolean }>(
       `/functions/v1/check-payment-status${ENV_SUFFIX}`,
       { checkoutSessionId: sessionId }
+    );
+  }
+
+  async logConsent(data: {
+    email?: string;
+    consentType: string;
+    plan: string;
+    userAgent: string;
+  }): Promise<{ success: boolean }> {
+    return apiService.post<{ success: boolean }>(
+      `/functions/v1/log-consent${ENV_SUFFIX}`,
+      {
+        ...data,
+        timestamp: new Date().toISOString(),
+      }
     );
   }
 
@@ -202,7 +217,7 @@ class RegistrationService {
    */
   private convertToApiPayload(payload: RegistrationPayload): RegistrationApiPayload {
     const fullPhoneNumber = getFullPhoneNumber(payload.contactInfo.phone, payload.contactInfo.country);
-    
+
     return {
       personalInfo: {
         firstName: payload.contactInfo.firstName,

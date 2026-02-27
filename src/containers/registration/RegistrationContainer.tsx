@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRegistrationStore } from '@/store/registration.store';
 import { preloadImages } from '@/utils/preloadImages';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import { registrationService } from '@/services/registration.service';
 import {
   TOTAL_STEPS,
   getStepConfig,
@@ -24,6 +25,7 @@ import Photo5 from '@/assets/girl_success_5.jpg';
 import PageContainer from '@/components/ui/page-container';
 import PageHeader from '@/components/ui/page-header';
 import ProgressIndicator from '@/components/ui/progress-indicator';
+import { ConsentModal } from '@/components/checkout/ConsentModal';
 
 // Import step components
 import SubscriptionTypeStep from '@/pages/registration/SubscriptionTypeStep';
@@ -56,8 +58,12 @@ export const RegistrationContainer: React.FC = () => {
     setSimplifiedMode,
     resetRegistration,
     // Computed
+    // Computed
     canNavigateToStep,
   } = useRegistrationStore();
+
+  const [showConsentModal, setShowConsentModal] = useState(false);
+  const [pendingRegistrationData, setPendingRegistrationData] = useState<{ contactInfo: any, goalsData: any } | null>(null);
 
   // Use type-safe currentStep
   const typedCurrentStep = currentStep as RegistrationStep;
@@ -326,8 +332,10 @@ export const RegistrationContainer: React.FC = () => {
                 };
                 // Save to store for analytics/tracking
                 setGoalsLifestyle(goalsData);
-                // Submit with both contactInfo and goalsData directly to avoid race condition
-                handleSubmit(data, goalsData);
+
+                // Show consent modal instead of submitting directly
+                setPendingRegistrationData({ contactInfo: data, goalsData });
+                setShowConsentModal(true);
               } else {
                 setCurrentStep('goals-lifestyle' as RegistrationStep);
               }
@@ -400,6 +408,29 @@ export const RegistrationContainer: React.FC = () => {
           totalSteps={isSimplifiedMode ? 2 : TOTAL_STEPS}
         />
         {renderStep()}
+
+        <ConsentModal
+          isOpen={showConsentModal}
+          onClose={() => setShowConsentModal(false)}
+          onAccept={async (email) => {
+            if (pendingRegistrationData) {
+              // Log consent
+              try {
+                await registrationService.logConsent({
+                  email,
+                  consentType: 'immediate_start_waiver',
+                  plan: subscriptionPlan || 'unknown',
+                  userAgent: navigator.userAgent
+                });
+              } catch (e) {
+                console.error('Consent log failed', e);
+              }
+
+              handleSubmit(pendingRegistrationData.contactInfo, pendingRegistrationData.goalsData);
+              setShowConsentModal(false);
+            }
+          }}
+        />
 
         {/* Temporary reset button for debugging - remove in production */}
         {process.env.NODE_ENV === 'development' && (
