@@ -175,10 +175,10 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                                 <div className="flex items-baseline justify-between">
                                     <h3 className="text-lg font-semibold">{plans['6month'].label}</h3>
                                     <div className="text-right">
-                                        <div className="text-sm text-zinc-600 font-semibold">{plans['6month'].priceToday} kr/mnd</div>
+                                        <div className="text-lg text-zinc-600 font-semibold">{plans['6month'].priceToday} kr/mnd</div>
                                         <div className="text-[9px] text-zinc-500 font-medium mt-0.5">
                                             Totalkostnad for bindingsperioden:<br />
-                                            {plans['6month'].priceToday * 6} kr ({plans['6month'].priceToday} kr/mnd × 6 mnd)
+                                            {plans['6month'].priceToday * 6} kr ({plans['6month'].priceToday} kr × 6 mnd)
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                                 <div className="flex items-baseline justify-between">
                                     <h3 className="text-lg font-semibold">{plans['1month'].label}</h3>
                                     <div className="text-right">
-                                        <span className="text-sm text-zinc-600">979 kr/mnd</span>
+                                        <span className="text-lg text-zinc-600 font-semibold">979 kr/mnd</span>
                                     </div>
                                 </div>
                                 <p className="text-xs text-gray-500 mt-2">
@@ -467,7 +467,7 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                             {selectedPlan === '6month' && (
                                 <div className="text-[9px] text-zinc-500 font-medium leading-tight mt-0.5">
                                     Totalkostnad for bindingsperioden:<br />
-                                    {currentPlan.priceToday * 6} kr ({currentPlan.priceToday} kr/mnd × 6 mnd)
+                                    {currentPlan.priceToday * 6} kr ({currentPlan.priceToday} kr × 6 mnd)
                                 </div>
                             )}
                             <div className="text-xs text-zinc-600">
