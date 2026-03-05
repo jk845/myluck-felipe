@@ -60,7 +60,7 @@ export const ConsentModal: React.FC<ConsentModalProps> = ({ isOpen, onClose, onA
                                 </div>
                             </div>
                             <span className="text-sm text-zinc-700 leading-relaxed font-['Libre_Baskerville']">
-                                Jeg ber om at tjenesten starter umiddelbart etter betaling. Jeg erkjenner at jeg ved dette frasier meg retten til refusjon for den leverte tjenesteperioden dersom jeg kansellerer innen 14-dagersfristen. Jeg kan fortsatt kansellere når som helst for å stoppe fremtidige betalinger. Jeg har lest og godtar <a href="/terms-v2" target="_blank" className="underline font-semibold hover:text-zinc-900 transition-colors">vilkårene og betingelsene</a>.
+                                Jeg ber om at tjenesten starter umiddelbart etter betaling. Jeg erkjenner at jeg ved dette frasier meg retten til refusjon for den leverte første måneden dersom jeg kansellerer innen 14-dagersfristen. Jeg har lest og godtar <a href="/terms-v2" target="_blank" className="underline font-semibold hover:text-zinc-900 transition-colors">vilkårene og betingelsene</a>.
                             </span>
                         </label>
 
@@ -68,8 +68,8 @@ export const ConsentModal: React.FC<ConsentModalProps> = ({ isOpen, onClose, onA
                             disabled={!canSubmit}
                             onClick={handleAccept}
                             className={`w-full h-14 rounded-full font-semibold font-['Hind_Vadodara'] transition-all flex items-center justify-center ${canSubmit
-                                    ? 'bg-[#fbdcfb] text-zinc-900 border-2 border-zinc-900 hover:bg-rose-200'
-                                    : 'bg-zinc-100 text-zinc-400 border-2 border-transparent cursor-not-allowed'
+                                ? 'bg-[#fbdcfb] text-zinc-900 border-2 border-zinc-900 hover:bg-rose-200'
+                                : 'bg-zinc-100 text-zinc-400 border-2 border-transparent cursor-not-allowed'
                                 }`}
                         >
                             Gå til betaling
