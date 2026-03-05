@@ -94,7 +94,7 @@ export function TermsAndConditionsV2Container() {
         {
             number: '11',
             title: 'Dispute Resolution',
-            content: 'Any disputes or claims related to these Terms or our services shall be resolved under the laws of <b>Estonia</b>, through <b>mediation or arbitration</b> before resorting to legal proceedings.'
+            content: 'These Terms are governed by the laws of Estonia. However, if you are a consumer residing in Norway, you retain all mandatory rights and protections under Norwegian consumer law, including the Norwegian Cancellation Rights Act (Angrerettloven), the Norwegian Consumer Purchases Act (Forbrukerkjøpsloven), and the Norwegian Marketing Control Act (Markedsføringsloven). No provision in these Terms limits or overrides those statutory rights.<br /><br />If a dispute arises, we encourage you to contact us first at <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a> so we can attempt to resolve the matter directly.<br /><br />If we are unable to reach a resolution, Norwegian consumers have the right to bring the matter before:<br /><br />• <b>Forbrukerrådet</b> (the Norwegian Consumer Authority) at <a href="https://www.forbrukerradet.no" target="_blank">forbrukerradet.no</a><br />• <b>Forbrukertilsynet</b> (the Norwegian Consumer Protection Authority) at <a href="https://www.forbrukertilsynet.no" target="_blank">forbrukertilsynet.no</a><br />• <b>The EU/EEA Online Dispute Resolution (ODR) platform</b> at <a href="https://ec.europa.eu/consumers/odr" target="_blank">ec.europa.eu/consumers/odr</a>'
         },
         {
             number: '12',
@@ -214,7 +214,7 @@ export function TermsAndConditionsV2Container() {
         {
             number: '11',
             title: 'Tvisteløsning',
-            content: 'Eventuelle tvister eller krav knyttet til disse Vilkårene eller våre tjenester skal løses i henhold til estisk lov, gjennom mekling eller voldgift før rettslige skritt vurderes.'
+            content: 'Disse Vilkårene er underlagt estisk lov. Dersom du er forbruker bosatt i Norge, beholder du imidlertid alle obligatoriske rettigheter og vern etter norsk forbrukerlovgivning, inkludert angrerettloven, forbrukerkjøpsloven og markedsføringsloven. Ingen bestemmelse i disse Vilkårene begrenser eller overstyrer disse lovfestede rettighetene.<br /><br />Dersom det oppstår en tvist, oppfordrer vi deg til å kontakte oss først på <a href="mailto:ask@myluck.no"><b>ask@myluck.no</b></a>, slik at vi kan forsøke å løse saken direkte.<br /><br />Dersom vi ikke kommer til enighet, har norske forbrukere rett til å bringe saken inn for:<br /><br />• <b>Forbrukerrådet</b> på <a href="https://www.forbrukerradet.no" target="_blank">forbrukerradet.no</a><br />• <b>Forbrukertilsynet</b> på <a href="https://www.forbrukertilsynet.no" target="_blank">forbrukertilsynet.no</a><br />• <b>EUs/EØS-plattform for nettbasert tvisteløsning (ODR)</b> på <a href="https://ec.europa.eu/consumers/odr" target="_blank">ec.europa.eu/consumers/odr</a>'
         },
         {
             number: '12',

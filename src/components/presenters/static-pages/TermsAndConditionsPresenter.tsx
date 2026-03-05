@@ -89,13 +89,8 @@ export function TermsAndConditionsPresenter({
                     )}
 
                     <div className="flex flex-col gap-3">
-                        <div className="flex items-center gap-2">
-                            <div className="text-black text-xl font-semibold font-['Hind_Vadodara'] leading-normal">
-                                Last updated:
-                            </div>
-                            <div className="text-black text-xl font-normal font-['Hind_Vadodara'] leading-normal">
-                                {lastUpdated}
-                            </div>
+                        <div className="text-black/60 text-sm font-normal font-['Libre_Baskerville'] leading-normal">
+                            <b>Last updated: {lastUpdated}</b>
                         </div>
                         <div className="text-black/60 text-sm font-normal font-['Libre_Baskerville'] leading-normal">
                             {introText}
