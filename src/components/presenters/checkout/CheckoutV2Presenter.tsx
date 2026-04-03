@@ -326,17 +326,17 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                     <div className="bg-gray-50 rounded-2xl overflow-hidden relative">
                         {/* Pink Top Section */}
                         <div className="bg-gray-100 px-4 py-3 flex items-center justify-between">
-                            <span className="text-sm font-medium text-gray-800">Starter 26 jan</span>
+                            <span className="text-sm font-medium text-gray-800">Starter 13 apr</span>
                             <span className="text-sm font-mono text-gray-800">{timeRemaining}</span>
                         </div>
 
                         {/* Content Section */}
                         <div className="p-4">
-                            <p className="text-lg font-semibold text-gray-900 mb-2">Kjerne fra innenfra (8 uker)</p>
+                            <p className="text-lg font-semibold text-gray-900 mb-2">Gjennomføring i praksis (6 uker)</p>
 
                             <div className="bg-emerald-50 border-l-4 border-emerald-400 p-3 mb-4 rounded-r-lg">
                                 <p className="text-sm font-semibold text-emerald-900 leading-snug italic">
-                                    Minimalt med ekstra tidsbruk. Maksimal effekt på styrke og kroppskontroll.
+                                    Mindre stress i hverdagen. Mer struktur og varige resultater.
                                 </p>
                             </div>
 
@@ -350,23 +350,23 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                             <div className="space-y-2">
                                 <div className="flex items-start gap-2">
                                     <span className="text-green-500 text-sm mt-0.5">✓</span>
-                                    <span className="text-sm text-gray-700">Inkluderer daglige korte rutiner samt 3 ukentlige økter som utfyller styrketrening.</span>
+                                    <span className="text-sm text-gray-700">Ukentlige møter hver søndag kveld for å planlegge uken sammen</span>
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <span className="text-green-500 text-sm mt-0.5">✓</span>
-                                    <span className="text-sm text-gray-700">Fokus på kjerne, bekkenbunn, pust og prestasjon – utviklet for å bygge konsistens og kroppsbevissthet.</span>
+                                    <span className="text-sm text-gray-700">Sette tydelige og realistiske mål for perioden</span>
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <span className="text-green-500 text-sm mt-0.5">✓</span>
-                                    <span className="text-sm text-gray-700">Direktesendte treningsøkter – teknikk i dybden</span>
+                                    <span className="text-sm text-gray-700">Lage en konkret kriseplan for utfordrende dager</span>
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <span className="text-green-500 text-sm mt-0.5">✓</span>
-                                    <span className="text-sm text-gray-700">Mat & hudhelse – praktiske måltider</span>
+                                    <span className="text-sm text-gray-700">Lære å ha realistiske forventninger til seg selv</span>
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <span className="text-green-500 text-sm mt-0.5">✓</span>
-                                    <span className="text-sm text-gray-700">Mila sin tilskudds-stack – hva, når og hvorfor</span>
+                                    <span className="text-sm text-gray-700">Skape en plan som gir fremgang uten å øke stress i hverdagen</span>
                                 </div>
                             </div>
 
