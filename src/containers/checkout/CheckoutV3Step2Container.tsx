@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import CheckoutV3Step2Presenter from '@/components/presenters/checkout/CheckoutV3Step2Presenter';
 import { ConsentModal } from '@/components/checkout/ConsentModal';

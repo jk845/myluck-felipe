@@ -5,7 +5,7 @@ import mainSuccess1 from '@/assets/main_success_1.jpg';
 import girlSuccess4 from '@/assets/girl_success_4.jpg';
 import girlSuccess3 from '@/assets/girl_success_3.jpg';
 import girlSuccess2 from '@/assets/girl_success_2.jpg';
-import milaAvatar from '@/assets/mila_main.jpg';
+
 import myluckAppPhones from '@/assets/myluck-app-phones-960.webp';
 
 interface PlanDetails {
@@ -36,7 +36,7 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
     selectedPlan,
     plans,
     onPlanChange,
-    timeRemaining,
+    timeRemaining: _timeRemaining,
     nextBillingDate,
     benefits,
     onContinue,
