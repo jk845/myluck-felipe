@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Lock, Star, ChevronDown } from 'lucide-react';
-import type { PlanType } from '@/containers/checkout/CheckoutV2Container';
+import type { PlanTypeV3, PlanDetailsV3 } from '@/containers/checkout/CheckoutV3Container';
 import mainSuccess1 from '@/assets/main_success_1.jpg';
 import girlSuccess4 from '@/assets/girl_success_4.jpg';
 import girlSuccess3 from '@/assets/girl_success_3.jpg';
@@ -8,31 +8,17 @@ import girlSuccess2 from '@/assets/girl_success_2.jpg';
 import milaAvatar from '@/assets/mila_main.jpg';
 import myluckAppPhones from '@/assets/myluck-app-phones-960.webp';
 
-interface PlanDetails {
-    label: string;
-    priceToday: number;
-    pricePerMonth: number;
-    per: string;
-    binding: number;
-    cta: string;
-    guarantee: boolean;
-    tagText?: string;
-    discount?: string;
-    isPopular?: boolean;
-    isBestValue?: boolean;
-}
-
-interface CheckoutV2PresenterProps {
-    selectedPlan: PlanType;
-    plans: Record<PlanType, PlanDetails>;
-    onPlanChange: (plan: PlanType) => void;
+interface CheckoutV3PresenterProps {
+    selectedPlan: PlanTypeV3;
+    plans: Record<PlanTypeV3, PlanDetailsV3>;
+    onPlanChange: (plan: PlanTypeV3) => void;
     timeRemaining: string;
     nextBillingDate: string;
     benefits: string[];
     onContinue: () => void;
 }
 
-const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
+const CheckoutV3Presenter: React.FC<CheckoutV3PresenterProps> = ({
     selectedPlan,
     plans,
     onPlanChange,
@@ -92,7 +78,6 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                // Show bottom bar when less than 90% of top CTA is visible (10% is hidden)
                 setShowBottomBar(entry.intersectionRatio < 0.9);
             },
             {
@@ -114,7 +99,6 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
 
     return (
         <div className="min-h-screen bg-white">
-            {/* Main Content */}
             <main className="mx-auto max-w-md px-4 pt-6 pb-44">
                 {/* Hero Section */}
                 <section className="space-y-3">
@@ -122,7 +106,7 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                         Personlig trenings- og kostholdsplan som fungerer i en travel hverdag.
                     </h1>
                     <p className="text-sm text-zinc-700">
-                        <strong>Fra 21 kr dagen</strong> · <strong>Ingen kaloritelling</strong> · <strong>Familievennlige måltider</strong> · <strong>20–35 min, 3x i uka</strong> · <strong>Hjem eller studio</strong>
+                        <strong>Fra 16 kr dagen</strong> · <strong>Ingen kaloritelling</strong> · <strong>Familievennlige måltider</strong> · <strong>20–35 min, 3x i uka</strong> · <strong>Hjem eller studio</strong>
                     </p>
                     <div className="flex items-center gap-2 text-sm text-zinc-700">
                         <div className="flex relative">
@@ -132,7 +116,6 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                                     className={`w-4 h-4 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-200 text-gray-300'}`}
                                 />
                             ))}
-                            {/* 60% filled last star overlay */}
                             <div className="absolute left-[64px] overflow-hidden w-[9.6px]">
                                 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                             </div>
@@ -141,7 +124,6 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                     </div>
                 </section>
 
-                {/* Dynamic CTA button based on selected plan */}
                 <div className="mt-6">
                     <button
                         ref={topCtaRef}
@@ -149,20 +131,16 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                         className="w-full rounded-full bg-[#fbdcfb] text-zinc-900 border-2 border-zinc-900 px-6 py-2 text-sm font-semibold transition-all hover:bg-rose-200 flex flex-col items-center justify-center"
                     >
                         <span>{currentPlan.cta}</span>
-                        <span className="text-[10px] font-normal opacity-80">Bekreft bestilling og betal</span>
+                        <span className="text-[10px] font-normal opacity-80">
+                            {selectedPlan === '1month' ? 'Bekreft bestilling og betal' : 'Velg betalingsmetode på neste side'}
+                        </span>
                     </button>
-                    <p className="text-xs text-zinc-600 text-center mt-2">
-                        Du betaler kun første månedsbeløp i dag. Umiddelbar tilgang + plass i alle kommende maraton i medlemsperioden.
-                    </p>
-                    <p className="text-[10px] text-zinc-500 text-center mt-1.5 leading-tight">
-                        For å benytte angreretten, kontakt oss på <a href="mailto:ask@myluck.no" className="underline hover:text-zinc-800">ask@myluck.no</a> innen 14 dager fra kjøpsdato.
-                    </p>
                 </div>
 
                 {/* Plan Selection */}
                 <section className="mt-6">
                     <h2 className="text-lg font-semibold mb-3 font-['Hind_Vadodara']">Velg plan</h2>
-                    <div className="grid gap-6">
+                    <div className="grid gap-4">
                         {/* 6 Month Plan */}
                         <article
                             onClick={() => onPlanChange('6month')}
@@ -175,28 +153,57 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                                 <div className="flex items-baseline justify-between">
                                     <h3 className="text-lg font-semibold">{plans['6month'].label}</h3>
                                     <div className="text-right">
-                                        <div className="text-lg text-zinc-600 font-semibold">{plans['6month'].priceToday} kr/mnd</div>
-                                        <div className="text-[9px] text-zinc-500 font-medium mt-0.5">
-                                            Totalkostnad for bindingsperioden:<br />
-                                            {plans['6month'].priceToday * 6} kr ({plans['6month'].priceToday} kr × 6 mnd)
-                                        </div>
+                                        <div className="text-xs text-zinc-500 font-medium lowercase">starter fra</div>
+                                        <div className="text-lg text-zinc-600 font-semibold leading-none">{plans['6month'].priceToday} kr/mnd</div>
                                     </div>
                                 </div>
-                                <p className="text-xs text-gray-500 mt-2">
-                                    ✅ 14 dagers angrerett
-                                </p>
+                                <p className="text-xs text-gray-500 mt-2">✅ 14 dagers angrerett</p>
                             </div>
-                            <div className="border-t rounded-b-2xl overflow-hidden bg-gray-100 text-gray-600 border-gray-200">
-                                <div className="px-4 pr-8 md:px-8 md:pr-12 h-[40px] md:h-[52px] flex items-center">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-sm">🎁</span>
-                                        <p className="text-xs font-medium leading-tight">Milas kostholdsplan tilpasset deg</p>
+                            {selectedPlan === '6month' && (
+                                <div className="border-t rounded-b-2xl overflow-hidden bg-fuchsia-50 text-fuchsia-800 border-fuchsia-200 px-4 py-2 text-xs font-medium">
+                                    Spar mest på denne planen (opptil 2,940 kr rabatt*)
+                                </div>
+                            )}
+                        </article>
+
+                        {/* 3 Month Plan */}
+                        <article
+                            onClick={() => onPlanChange('3month')}
+                            className={`rounded-2xl cursor-pointer transition-all ${selectedPlan === '3month'
+                                ? 'border-3 border-fuchsia-500 ring-4 ring-fuchsia-100 shadow-md shadow-fuchsia-200/30'
+                                : 'outline outline-1 outline-black/10 hover:outline-2 hover:outline-black/20'
+                                }`}
+                        >
+                            <div className="p-4">
+                                <div className="flex items-baseline justify-between">
+                                    <h3 className="text-lg font-semibold">{plans['3month'].label}</h3>
+                                    <div className="text-right">
+                                        <div className="text-xs text-zinc-500 font-medium lowercase">starter fra</div>
+                                        <span className="text-lg text-zinc-600 font-semibold leading-none">{plans['3month'].priceToday} kr/mnd</span>
                                     </div>
                                 </div>
+                                <p className="text-xs text-gray-500 mt-2">✅ 14 dagers angrerett</p>
                             </div>
                         </article>
 
-
+                        {/* 1 Month Plan */}
+                        <article
+                            onClick={() => onPlanChange('1month')}
+                            className={`rounded-2xl cursor-pointer transition-all ${selectedPlan === '1month'
+                                ? 'border-3 border-fuchsia-500 ring-4 ring-fuchsia-100 shadow-md shadow-fuchsia-200/30'
+                                : 'outline outline-1 outline-black/10 hover:outline-2 hover:outline-black/20'
+                                }`}
+                        >
+                            <div className="p-4">
+                                <div className="flex items-baseline justify-between">
+                                    <h3 className="text-lg font-semibold">{plans['1month'].label}</h3>
+                                    <div className="text-right">
+                                        <span className="text-lg text-zinc-600 font-semibold">{plans['1month'].priceToday} kr/mnd</span>
+                                    </div>
+                                </div>
+                                <p className="text-xs text-gray-500 mt-2">Ingen angrerett på denne planen</p>
+                            </div>
+                        </article>
                     </div>
                 </section>
 
@@ -328,7 +335,6 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                 </section>
 
 
-                {/* Benefits Section */}
                 <section className="mt-10">
                     <h2 className="text-lg font-semibold mb-3 font-['Hind_Vadodara']">Dette får du</h2>
                     <ul className="space-y-3 text-sm text-zinc-800">
@@ -379,6 +385,10 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                         ))}
                     </div>
                 </section>
+
+                <p className="mt-8 text-[10px] text-zinc-400 text-center">
+                    *Sammenlignet med 1-måned planen
+                </p>
             </main>
 
             {/* Sticky Payment Bar - Only show when top CTA is 30% hidden */}
@@ -392,44 +402,14 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
             >
                 <div className="h-[0.5px] bg-gray-400/50"></div>
 
-                {/* Guarantee Banner - Only show for 6m plan */}
-                {selectedPlan === '6month' && (
-                    <div className="bg-green-50 border-b border-green-100">
-                        <div className="mx-auto max-w-md px-4 py-2">
-                            <p className="text-xs text-green-700 text-center font-medium">
-                                14 dagers angrerett — kanseller når som helst
-                            </p>
-                        </div>
-                    </div>
-                )}
-
                 <div className="bg-white shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
                     <div className="mx-auto max-w-md px-4 py-4 flex items-center justify-between gap-3">
                         <div className="text-sm">
                             <div className="font-semibold">
-                                {currentPlan.label}
+                                Premium {currentPlan.label}
                             </div>
                             <div className="text-xs text-zinc-600 font-semibold">
-                                {currentPlan.priceToday} kr i dag
-                            </div>
-                            {selectedPlan === '6month' && (
-                                <div className="text-[9px] text-zinc-500 font-medium leading-tight mt-0.5">
-                                    Totalkostnad for bindingsperioden:<br />
-                                    {currentPlan.priceToday * 6} kr ({currentPlan.priceToday} kr × 6 mnd)
-                                </div>
-                            )}
-                            <div className="text-xs text-zinc-600">
-                                Neste månedsbetaling {nextBillingDate}
-                            </div>
-                            <div className="text-xs">
-                                <a
-                                    href="/terms-v3"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-zinc-600 underline hover:text-zinc-800"
-                                >
-                                    Se Vilkår og betingelser
-                                </a>
+                                {selectedPlan !== '1month' && 'starter fra '}{currentPlan.priceToday} kr/mnd
                             </div>
                         </div>
                         <button
@@ -440,7 +420,6 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
                                 <Lock className="w-3.5 h-3.5" />
                                 <span>{currentPlan.cta}</span>
                             </div>
-                            <span className="text-[10px] font-normal opacity-80">Bekreft bestilling og betal</span>
                         </button>
                     </div>
                 </div>
@@ -449,4 +428,4 @@ const CheckoutV2Presenter: React.FC<CheckoutV2PresenterProps> = ({
     );
 };
 
-export default CheckoutV2Presenter;
+export default CheckoutV3Presenter;

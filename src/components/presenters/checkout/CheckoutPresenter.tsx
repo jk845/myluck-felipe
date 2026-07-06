@@ -196,26 +196,7 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
               </div>
             </article>
 
-            {/* 1 Month Plan */}
-            <article
-              onClick={() => onPlanChange('1month')}
-              className={`rounded-2xl cursor-pointer transition-all ${selectedPlan === '1month'
-                ? 'border-3 border-fuchsia-500 ring-4 ring-fuchsia-100 shadow-md shadow-fuchsia-200/30'
-                : 'outline outline-1 outline-black/10 hover:outline-2 hover:outline-black/20'
-                }`}
-            >
-              <div className="p-4">
-                <div className="flex items-baseline justify-between">
-                  <h3 className="text-lg font-semibold">{plans['1month'].label}</h3>
-                  <div className="text-right">
-                    <span className="text-sm text-zinc-600">890 kr/mnd</span>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  Ingen angrerett på denne planen
-                </p>
-              </div>
-            </article>
+
           </div>
         </section>
 
@@ -445,7 +426,7 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
           <div className="mx-auto max-w-md px-4 py-4 flex items-center justify-between gap-3">
             <div className="text-sm">
               <div className="font-semibold">
-                Premium {currentPlan.label}{currentPlan.binding > 0 ? ' binding' : ''}
+                {currentPlan.label}
               </div>
               <div className="text-xs text-zinc-600 font-semibold">
                 {currentPlan.priceToday} kr i dag
@@ -461,7 +442,7 @@ const CheckoutPresenter: React.FC<CheckoutPresenterProps> = ({
               </div>
               <div className="text-xs">
                 <a
-                  href="/terms-v2"
+                  href="/terms-v3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-600 underline hover:text-zinc-800"

@@ -33,12 +33,12 @@ const plans: Record<PlanType, PlanDetails> = {
     guarantee: false
   },
   '6month': {
-    label: '6 mnd',
+    label: 'MyLuck Transformasjon',
     priceToday: 590,
     pricePerMonth: 590,
     per: '/mnd',
     binding: 6,
-    cta: 'Start 6 mnd nå',
+    cta: 'Start MyLuck Transformasjon nå',
     guarantee: true,
     tagText: 'Mest populær',
     discount: '- 1 800 kr',
@@ -139,10 +139,12 @@ const CheckoutContainer: React.FC = () => {
   };
 
   const benefits = [
-    '🏋️‍♀️ Personlig trenings- og matplan som tilpasser seg deg',
-    '🏃‍♀️ Tilgang til alle Transformation Marathons',
-    '🍲 Nesten 300 oppskrifter med handlelister (familievennlige bytter)',
-    '🤝 Privat støttefellesskap og daglig veiledning'
+    '💪 Treningsprogram',
+    '🥗 Personlig matplan og over 300 oppskrifter',
+    '🎥 Webinarer og leksjoner',
+    '📚 Månedens tema',
+    '🌸 MyLuck Univers',
+    '✅ Vaner som støtter deg i hverdagen'
   ];
 
   return (

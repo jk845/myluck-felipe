@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import CheckoutV2Presenter from '@/components/presenters/checkout/CheckoutV2Presenter';
+import { useNavigate } from 'react-router-dom';
+import CheckoutV3Presenter from '@/components/presenters/checkout/CheckoutV3Presenter';
 import { ConsentModal } from '@/components/checkout/ConsentModal';
 import { registrationService } from '@/services/registration.service';
 
-export type PlanType = '1month' | '6month';
+export type PlanTypeV3 = '1month' | '3month' | '6month';
 
-interface PlanDetails {
+export interface PlanDetailsV3 {
     label: string;
     priceToday: number;
     pricePerMonth: number;
@@ -19,9 +20,9 @@ interface PlanDetails {
     isBestValue?: boolean;
 }
 
-const PRICE_INCREASE_DEADLINE = new Date(2025, 9, 20, 23, 59, 59); // Oct 20, 2025
+const PRICE_INCREASE_DEADLINE = new Date(2025, 9, 20, 23, 59, 59);
 
-const plans: Record<PlanType, PlanDetails> = {
+const plans: Record<PlanTypeV3, PlanDetailsV3> = {
     '1month': {
         label: '1 måned',
         priceToday: 979,
@@ -31,13 +32,23 @@ const plans: Record<PlanType, PlanDetails> = {
         cta: 'Start 1 mnd nå',
         guarantee: false
     },
+    '3month': {
+        label: '3 måneder',
+        priceToday: 599,
+        pricePerMonth: 599,
+        per: '/mnd',
+        binding: 3,
+        cta: 'Gå videre',
+        guarantee: true,
+        tagText: 'Anbefalt'
+    },
     '6month': {
-        label: 'MyLuck Transformasjon',
-        priceToday: 649,
-        pricePerMonth: 649,
+        label: '6 måneder',
+        priceToday: 489,
+        pricePerMonth: 489,
         per: '/mnd',
         binding: 6,
-        cta: 'Start MyLuck Transformasjon nå',
+        cta: 'Gå videre',
         guarantee: true,
         tagText: 'Mest populær',
         discount: '- 1 800 kr',
@@ -45,10 +56,11 @@ const plans: Record<PlanType, PlanDetails> = {
     }
 };
 
-const CheckoutV2Container: React.FC = () => {
-    const [selectedPlan, setSelectedPlan] = useState<PlanType>('6month');
+const CheckoutV3Container: React.FC = () => {
+    const [selectedPlan, setSelectedPlan] = useState<PlanTypeV3>('6month');
     const [timeRemaining, setTimeRemaining] = useState<string>('—:—:—');
     const [showConsentModal, setShowConsentModal] = useState(false);
+    const navigate = useNavigate();
 
     // Calculate countdown timer
     useEffect(() => {
@@ -74,30 +86,28 @@ const CheckoutV2Container: React.FC = () => {
         return () => clearInterval(interval);
     }, []);
 
-
-
     const getNextBillingDate = (): string => {
         const now = new Date();
-        // Next billing is one month from today
         const nextBilling = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate());
-
         const months = ['jan', 'feb', 'mar', 'apr', 'mai', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'des'];
         return `${nextBilling.getDate()} ${months[nextBilling.getMonth()]}`;
     };
 
-    const handlePlanChange = (plan: PlanType) => {
+    const handlePlanChange = (plan: PlanTypeV3) => {
         setSelectedPlan(plan);
     };
 
-    // Helper function to get bonuses for each plan
-
-
     const handleContinue = () => {
-        setShowConsentModal(true);
+        // If 1 month, maybe just go straight to consent for immediate start, or redirect.
+        if (selectedPlan === '1month') {
+            setShowConsentModal(true);
+        } else {
+            // For 3 or 6 months, navigate to step 2 to choose payment method / price
+            navigate(`/checkout-v3-step2?plan=${selectedPlan}`);
+        }
     };
 
     const handleAcceptConsent = async (email: string) => {
-        // Log the consent event server-side
         try {
             await registrationService.logConsent({
                 email,
@@ -107,16 +117,11 @@ const CheckoutV2Container: React.FC = () => {
             });
         } catch (error) {
             console.error('Failed to log consent:', error);
-            // We still proceed even if logging fails, to not block the user
         }
 
-        // Redirect to Everfit package
-        const everfitUrls: Record<PlanType, string> = {
-            '6month': 'https://coach.everfit.io/package/HF749073',
-            '1month': 'https://coach.everfit.io/package/HF749073'
-        };
-
-        window.location.href = everfitUrls[selectedPlan];
+        if (selectedPlan === '1month') {
+            window.location.href = 'https://coach.everfit.io/package/HF749073';
+        }
     };
 
     const benefits = [
@@ -130,7 +135,7 @@ const CheckoutV2Container: React.FC = () => {
 
     return (
         <>
-            <CheckoutV2Presenter
+            <CheckoutV3Presenter
                 selectedPlan={selectedPlan}
                 plans={plans}
                 onPlanChange={handlePlanChange}
@@ -139,13 +144,15 @@ const CheckoutV2Container: React.FC = () => {
                 benefits={benefits}
                 onContinue={handleContinue}
             />
-            <ConsentModal
-                isOpen={showConsentModal}
-                onClose={() => setShowConsentModal(false)}
-                onAccept={handleAcceptConsent}
-            />
+            {selectedPlan === '1month' && (
+                <ConsentModal
+                    isOpen={showConsentModal}
+                    onClose={() => setShowConsentModal(false)}
+                    onAccept={handleAcceptConsent}
+                />
+            )}
         </>
     );
 };
 
-export default CheckoutV2Container;
+export default CheckoutV3Container;

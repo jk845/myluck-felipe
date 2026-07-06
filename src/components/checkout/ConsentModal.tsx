@@ -60,7 +60,7 @@ export const ConsentModal: React.FC<ConsentModalProps> = ({ isOpen, onClose, onA
                                 </div>
                             </div>
                             <span className="text-sm text-zinc-700 leading-relaxed font-['Libre_Baskerville']">
-                                Jeg ber om at tjenesten starter umiddelbart etter betaling. Jeg erkjenner at jeg ved dette frasier meg retten til refusjon for den leverte første måneden dersom jeg kansellerer innen 14-dagersfristen. Jeg har lest og godtar <a href="/terms-v2" target="_blank" className="underline font-semibold hover:text-zinc-900 transition-colors">vilkårene og betingelsene</a>.
+                                Jeg ber om at tjenesten starter umiddelbart etter betaling. Jeg erkjenner at jeg ved dette frasier meg retten til refusjon for den leverte første måneden dersom jeg kansellerer innen 14-dagersfristen. Jeg har lest og godtar <a href="/terms-v3" target="_blank" className="underline font-semibold hover:text-zinc-900 transition-colors">vilkårene og betingelsene</a>.
                             </span>
                         </label>
 

@@ -10,6 +10,7 @@ import ThankYouPage from "./pages/ThankYouPage";
 import AboutCompanyPage from "./pages/AboutCompanyPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import TermsAndConditionsV2Page from "./pages/TermsAndConditionsV2Page";
+import TermsAndConditionsV3Page from "./pages/TermsAndConditionsV3Page";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import PaymentFailedPage from "./pages/PaymentFailedPage";
 import CancelSubscriptionPage from "./pages/CancelSubscriptionPage";
@@ -21,6 +22,8 @@ import TestPage from "./pages/TestPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import CheckoutLimitedOfferPage from "./pages/CheckoutLimitedOfferPage";
 import CheckoutV2Page from "./pages/CheckoutV2Page";
+import CheckoutV3Page from "./pages/CheckoutV3Page";
+import CheckoutV3Step2Page from "./pages/CheckoutV3Step2Page";
 
 // Basic redirect component for client-side routing
 const RedirectToMyluck: React.FC = () => {
@@ -60,6 +63,8 @@ const App: React.FC = () => {
             <Route path="/checkout" element={<RedirectToMyluck />} />
             <Route path="/checkout-mollie" element={<CheckoutPage />} />
             <Route path="/checkout-v2" element={<CheckoutV2Page />} />
+            <Route path="/checkout-v3" element={<CheckoutV3Page />} />
+            <Route path="/checkout-v3-step2" element={<CheckoutV3Step2Page />} />
             <Route path="/checkout-limited-offer" element={<CheckoutLimitedOfferPage />} />
             <Route path="/registration" element={<RegistrationPage />} />
             <Route path="/subscription" element={<RegistrationPage />} />
@@ -73,6 +78,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<AboutCompanyPage />} />
             <Route path="/terms" element={<TermsAndConditionsPage />} />
             <Route path="/terms-v2" element={<TermsAndConditionsV2Page />} />
+            <Route path="/terms-v3" element={<TermsAndConditionsV3Page />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/payment-failed" element={<PaymentFailedPage />} />
             <Route path="/confirm-cancellation" element={<ConfirmCancellationPage />} />

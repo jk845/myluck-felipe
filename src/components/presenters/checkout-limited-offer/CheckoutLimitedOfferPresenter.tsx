@@ -565,7 +565,7 @@ const CheckoutLimitedOfferPresenter: React.FC<CheckoutLimitedOfferPresenterProps
               </div>
               <div className="text-xs">
                 <a
-                  href="/terms-v2"
+                  href="/terms-v3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-600 underline hover:text-zinc-800"
