@@ -60,7 +60,7 @@ export const ConsentModal: React.FC<ConsentModalProps> = ({ isOpen, onClose, onA
                                 </div>
                             </div>
                             <span className="text-sm text-zinc-700 leading-relaxed font-['Libre_Baskerville']">
-                                Jeg ber om at tjenesten starter umiddelbart etter betaling. Jeg erkjenner at jeg ved dette frasier meg retten til refusjon for den leverte første måneden dersom jeg kansellerer innen 14-dagersfristen. Jeg har lest og godtar <a href="/terms-v3" target="_blank" className="underline font-semibold hover:text-zinc-900 transition-colors">vilkårene og betingelsene</a>.
+                                Jeg ber uttrykkelig om at tjenesten starter umiddelbart etter betaling. Jeg er innforstått med at jeg får umiddelbar tilgang til appen, mitt personlige treningsprogram, kostholdsplan, treningsvideoer, fremdriftssporing, fellesskapet og øvrige digitale tjenester som inngår i abonnementet. Jeg er videre innforstått med at betalingen for den første abonnementsperioden derfor ikke refunderes dersom jeg avslutter abonnementet innen 14 dager etter kjøpet. Jeg har lest og godtar <a href="/terms-v3" target="_blank" className="underline font-semibold hover:text-zinc-900 transition-colors">vilkårene og betingelsene</a>.
                             </span>
                         </label>
 
